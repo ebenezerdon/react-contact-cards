@@ -8,7 +8,7 @@ return (
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1] }}
           transition={{ duration: index/5 }}
-          drag={true}
+          drag={false}
           dragElastic={1}
           dragConstraints={{ top: 1, bottom: 1, right: 1, left: 1 }}
           className="bg-white text-white h-80 rounded-lg shadow-md"
