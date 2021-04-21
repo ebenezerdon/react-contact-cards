@@ -1,16 +1,8 @@
-import { motion } from 'framer-motion'
-
 const ContactCards = ({ contactList, setSelectedContact }) => {
   return (
     <>
       {contactList?.map((contact, index) => (
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1] }}
-          transition={{ duration: index/5 }}
-          drag={false}
-          dragElastic={1}
-          dragConstraints={{ top: 1, bottom: 1, right: 1, left: 1 }}
+        <button
           className="bg-white text-white h-80 rounded-lg shadow-md"
           key={index}
           onClick={() => setSelectedContact(contact)}
@@ -30,7 +22,7 @@ const ContactCards = ({ contactList, setSelectedContact }) => {
               <span className="font-medium">city: </span>{contact.location.city}
             </p>
           </figcaption>
-        </motion.button>
+        </button>
       ))}
     </>
   )
