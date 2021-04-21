@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 const ContactCards = ({ contactList, setSelectedContact }) => {
-return (
+  return (
     <>
       {contactList?.map((contact, index) => (
         <motion.button
