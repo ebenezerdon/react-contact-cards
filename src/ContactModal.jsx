@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion'
-
 const ContactModal = ({ contact, setSelectedContact }) => {
   const closeModal = event => {
     if(event.keyCode === 27) setSelectedContact(null)
@@ -9,17 +7,13 @@ const ContactModal = ({ contact, setSelectedContact }) => {
   window.addEventListener('keydown', event => closeModal(event))
 
   return (
-    <div className="fixed top-0 h-screen w-screen bg-black bg-opacity-10">
-      <div className="flex h-screen" onClick={event => closeModal(event)}>
-        <motion.div
-          animate={{ scale: [0.7, 1.5, 1] }}
-          exit={{ scale: 0 }}
-          className="m-auto bg-white rounded-lg shadow-lg px-14 pt-5 pb-10"
-        >
-          <p className="text-center mb-5 text-gray-700 font-semibold text-xl">
+    <div className={style.overlay}>
+      <div className={style.container} onClick={event => closeModal(event)}>
+        <div className={style.modal}>
+          <p className={style.title}>
             {contact.name.title} {contact.name.first} {contact.name.last}
           </p>
-          <div className="grid grid-cols-2 text-gray-600 gap-x-0">
+          <div className={style.content}>
             <p className="font-medium">Username:</p>
             <p>{contact.login.username}</p>
             <p className="font-medium">Gender:</p>
@@ -37,10 +31,18 @@ const ContactModal = ({ contact, setSelectedContact }) => {
             <p className="font-medium">Age:</p>
             <p>{contact.dob.age}</p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   )
+}
+
+const style = {
+  overlay: 'fixed top-0 h-screen w-screen bg-black bg-opacity-10',
+  container: 'flex h-screen',
+  modal: 'm-auto bg-white rounded-lg shadow-lg px-14 pt-5 pb-10',
+  title: 'text-center mb-5 text-gray-700 font-semibold text-xl',
+  content: 'grid grid-cols-2 text-gray-600 gap-x-0'
 }
 
 export default ContactModal
