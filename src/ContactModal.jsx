@@ -2,8 +2,9 @@ import { motion } from 'framer-motion'
 
 const ContactModal = ({ contact, setSelectedContact }) => {
   const closeModal = event => {
-    if(event.keyCode === 27) setSelectedContact(null)
-    if (event.currentTarget === event.target) setSelectedContact(null)
+    if(event.keyCode === 27 || event.currentTarget === event.target) {
+      setSelectedContact(null)
+    }
   }
 
   window.addEventListener('keydown', event => closeModal(event))
